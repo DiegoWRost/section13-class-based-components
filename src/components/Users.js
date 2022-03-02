@@ -3,7 +3,6 @@ import User from "./User";
 
 import classes from "./Users.module.css";
 
-
 class Users extends Component {
   constructor() {
     super();
@@ -11,6 +10,12 @@ class Users extends Component {
     this.state = {
       showUsers: true,
     };
+  }
+
+  componentDidUpdate() {
+    if (this.props.users.length === 0) {
+      throw new Error("No users provided!");
+    }
   }
 
   toggleUsersHandler() {
